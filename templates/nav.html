@@ -1,0 +1,33 @@
+
+
+<nav>
+    <div class="logo">
+        <h1>ShopSphere</h1>
+    </div>
+    {% if showtrend %}
+    <form action="">
+        <input type="text" name="q"  placeholder="Search...">
+        <input type="submit" value="Search" >
+    </form>
+    <form action="">
+        <input type="submit" value="TRENDING"  name="TRENDING" >
+    </form>
+    {% endif %}
+
+    <div class="navlink1">
+        <a href="{% url 'home' %}">HOME</a>
+        {% if request.user.is_authenticated %}
+            <a href="{% url 'cart' %}">CART({{count}})</a>
+            <a href="{% url 'profile' %}">PROFILE({{request.user.first_name|upper}})</a>
+            <a href="{% url 'logout_' %}">LOGOUT</a>
+        {% else %}
+        <a href="{% url 'login_' %}">LOGIN</a>
+        {% endif %}
+        <a href="{% url 'contactus' %}">SUPPORT</a>
+
+        {% if about %}
+        <a href="{% url 'about' %}">KNOW US</a>
+    
+        {% endif %}
+    </div>
+</nav>

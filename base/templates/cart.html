@@ -1,0 +1,47 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+    <div class="addcart">
+        <h2>CART</h2>
+
+        <div class="cartitems">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total Price</th>
+                        <th>Remove</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in a %}
+                        <tr>
+                            <td>{{ item.category }}</td>
+                            <td>{{ item.name }}</td>
+                            <td>{{ item.desc }}</td>
+                            <td>{{ item.price }}</td>
+                            <td>
+                                {{ item.quantity }}
+                            </td>
+                            <td>{{ item.totalprice }}</td>
+                            <td><a href="{% url 'cartitemrem' item.id %}" class="remove-item">Remove</a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="cartlinks">
+            <h2>Total Amount: {{final}}</h2>
+            <a href="{% url 'checkoutform' %}" class="checkout-btn">Checkout</a>
+            <a href="{% url 'home' %}" class="cancel-btn">Cancel</a>
+        </div>
+        
+    </div>
+
+{% endblock content %}

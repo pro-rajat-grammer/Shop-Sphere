@@ -1,0 +1,51 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+    <div class="home">  
+        <div class="homelinks">
+            {% if showtrend %}
+                    <form action="" class="trending-form">
+                        <input type="submit" value="Trending" name="TRENDING" class="trending-button">
+                    </form>
+
+            {% endif %}
+        
+            <a href="{% url 'home' %}" class="nav-link">All Products</a>
+            <form action="" class="category-form">
+                {% for i in links %}
+                    <input type="submit" value="{{i}}" name="cat" class="category-button">
+                {% endfor %}
+            </form>
+            {% if showtrend %}
+
+            <form action="" class="search-form">
+                <input type="text" name="q" placeholder="Search..." class="search-input">
+                <input type="submit" value="Search" class="search-submit">
+            </form>
+            {% endif %}
+        </div>
+         
+
+        <div class="homeproducts">
+
+            {% if noproduct %}
+
+                <h2 style="margin: auto;" >No Product Found</h2>
+
+            {% else %}
+            
+            {% for i in products %}
+                <div class="eachproduct">             
+                <img src="{{ i.image.url }}" alt="Image of {{ i.name }}">
+                <h1>{{i.name}}</h1>
+                <p>{{i.desc}}</p>
+                <h2>Price: Rs. {{i.price}}</h2>
+                <a href="{% url 'addcart' i.id %}" >Add to Cart</a>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+
+{% endblock content %}

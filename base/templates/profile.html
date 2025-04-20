@@ -1,0 +1,33 @@
+{% extends 'main.html' %}
+
+{% block content %}
+    <div class="profile">
+        <h2>Profile</h2>
+        <div class="profile-container">
+            <table class="profile-table">
+                <tr>
+                    <td class="label">Name</td>
+                    <td class="value">{{ request.user.first_name }}</td>
+                </tr>
+                <tr>
+                    <td class="label">Email</td>
+                    <td class="value">{{ request.user.email }}</td>
+                </tr>
+                <tr>
+                    <td class="label">Username</td>
+                    <td class="value">{{ request.user.username }}</td>
+                </tr>
+                <tr>
+                    <td class="label">Date Joined</td>
+                    <td class="value">{{ request.user.date_joined }}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="profile-links">
+            <a href="" class="btn">Edit Profile</a>
+            <a href="" class="btn">Change Password</a>
+            <a href="" class="btn btn-danger">Delete Profile</a>
+            <a href="{% url 'logout_' %}" class="btn btn-danger">Logout</a>
+        </div>
+    </div>
+{% endblock content %}

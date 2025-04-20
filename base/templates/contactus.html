@@ -1,0 +1,19 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+    <div class="contactus" >
+        <h3>CONTACT US</h3>
+
+        <form action="" method="POST" >
+            {% csrf_token %}
+
+            {{Contact}}
+
+            <input type="submit" value="submit" >
+
+        </form>
+        
+    </div>
+
+{% endblock content %}

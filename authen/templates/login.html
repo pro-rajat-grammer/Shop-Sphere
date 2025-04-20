@@ -1,0 +1,36 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+{% if wc %}
+<div class="loginwarning">
+        <h1>Please Enter Correct Credentials</h1>
+        <h1>If not registered please register first</h1>
+        <a href="{% url 'register' %}" class="register-link">Register Here</a>
+    </div>
+{% endif %}
+
+<div class="login" >
+
+    <form action="" method="POST" >
+        {% csrf_token %}
+        <h2>Login</h2>
+
+        <label for="">Username</label>
+        <input type="text" name="username" >
+
+        <label for="">Password</label>
+        <input type="password" name="password" >
+
+        <input type="submit" value="LOGIN" >
+
+    </form>
+
+    <div class="register">
+        <h3>not register?  <a href="{% url 'register' %}">Register</a> </h3>
+    </div>
+
+</div>
+
+
+{% endblock content %}
